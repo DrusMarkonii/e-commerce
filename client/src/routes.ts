@@ -3,6 +3,7 @@ import Auth from "./pages/Auth";
 import Basket from "./pages/Basket";
 import DevicePage from "./pages/DevicePage";
 import Shop from "./pages/Shop";
+
 import {
   ADMIN_ROUTE,
   BASKET_ROUTE,

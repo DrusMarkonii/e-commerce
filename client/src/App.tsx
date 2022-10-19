@@ -2,14 +2,17 @@ import { useContext, useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { Spinner } from "react-bootstrap";
-import { Context } from ".";
+
 import AppRouter from "./components/AppRouter";
+import { Context } from ".";
 import NavBar from "./components/NavBar";
 import { check } from "./http/userApi";
+import { deviceType } from "./utils/types";
 
 const App = observer(() => {
   const { user, devices } = useContext(Context);
   const [loading, setLoading] = useState(true);
+  const localDevices: deviceType = JSON.parse(localStorage.getItem("devices")!);
 
   useEffect(() => {
     setTimeout(() => {
@@ -20,8 +23,6 @@ const App = observer(() => {
         })
         .finally(() => setLoading(false));
     }, 1000);
-
-    const localDevices = JSON.parse(localStorage.getItem("devices")) || false;
 
     if (localDevices.length) {
       localDevices.map((device) => devices.setBasketDevices(device));

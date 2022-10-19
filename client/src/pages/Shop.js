@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Container, Pagination } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import TypeBar from "../components/TypeBar";
@@ -26,7 +26,7 @@ const Shop = observer(() => {
     fetchDevices(
       devices.selectedType.id,
       devices.selectedBrand.id,
-      devices.page,
+      devices.page
     ).then((data) => {
       devices.setDevices(data.rows);
       devices.setTotalCount(data.count);
